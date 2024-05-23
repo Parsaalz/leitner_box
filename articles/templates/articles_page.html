@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% block title%}
+مقالات|آموزشی
+{% endblock title%}
+{% block content%}
+<center>
+<div style="width:1200px;margin-top:50px">
+    {% for article in ar%}
+<div class="row featurette">
+    <div class="col-md-7">
+      <h1 class="featurette-heading fw-normal lh-1">{{article.title}}</h1>
+      <p class="lead" dir="rtl" style="font-size:15pt;margin-top:50px">{{article.description|truncatewords:30}}</p>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <a href="#"><button class="btn btn-primary" style="margin-top:150px">جزییات مقاله</button></a>
+        <button class="btn btn-primary" type="button">Button</button>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <img src="{{article.image.url}}" alt="" width="500px" style="border-radius:20px">
+    </div>
+  </div>
+  <hr class="featurette-divider">
+</div>
+{% endfor %}
+</center>
+{% endblock content%}

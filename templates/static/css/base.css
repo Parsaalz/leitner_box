@@ -1,0 +1,8 @@
+@font-face{
+    font-family:sahel;
+    src:url('Sahel-FD.eot');
+    src:url('Sahel-FD.eot') format('embedded-opentype'),
+    url('Sahel-FD.woff2') format('woff2'),
+    url('Sahel-FD.woff') format('woff'),
+    url('Sahel-FD.ttf') format('truetype');
+}

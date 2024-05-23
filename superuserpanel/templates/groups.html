@@ -1,0 +1,44 @@
+{% extends 'base_panel.html' %}
+{% block content %}
+<center>
+<div style="width:1350px;height:auto;background-color:red;margin-top:100px">
+    <div style="width:900px;height:auto;float:left">
+        <div class="bd-example">
+            <table class="table table-striped-columns">
+                <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">groupname</th>
+                <th scope="col">NumberOfusers</th>
+                <th scope="col">add permission</th>
+                <th scope="col">Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in grp%}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{i.name}}</td>
+                <td>number of users</td>
+                <td><a href="{% url 'groups_detail' i.id%}">add permission</a></td>
+                <td><a href="{% url 'group_remove' i.id%}">Remove</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          
+            </table>
+          </div>
+    </div>
+    <div style="width:450px;height:400px;float:left">
+      <form style="width:300px;margin-top:40px" method="POST">
+        {%csrf_token%}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Group name</label>
+          {{add_grp.groupname}}
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+</div>
+</center>
+{%endblock content %}

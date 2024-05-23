@@ -1,0 +1,42 @@
+{% extends 'base_panel.html' %}
+{% block content%}
+<!-- On tables -->
+<center>
+<div class="bd-example" style="margin-top:100px;width:1000px">
+    <table class="table">
+      <thead>
+        <tr class="table-dark">
+          <th scope="col">Username</th>
+          <th scope="col">Firstname</th>
+          <th scope="col">Lastname</th>
+          <th scope="col">Email</th>
+          <th scope="col">Login with users</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in all_u%}
+            <tr class="table-white">
+                <th scope="row">{{i.username}}</th>
+                {% if i.first_name|length == 0 %}
+                <td>None</td>
+                {% else %}
+                <td>{{ i.first_name }}</td>
+                {% endif %}
+                {% if i.last_name|length == 0 %}
+                <td>None</td>
+                {% else %}
+                <td>{{ i.last_name }}</td>
+                {% endif %}
+                {% if i.email|length == 0 %}
+                <td>None</td>
+                {% else %}
+                <td>{{ i.email }}</td>
+                {% endif %}
+                <td><a href="{% url 'groups_login' i.id%}">Login</a></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  </center>
+{% endblock content%}

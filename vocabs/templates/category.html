@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content%}
+<center>
+  <div style="width: 1000px;margin-top:50px">
+    <h1 style="color:#45474b">Category</h1>
+    <ul class="dropdown-menu d-block position-static mx-0 shadow w-220px" data-bs-theme="light">
+      {% for i in ct%}
+      <li>
+        <a class="dropdown-item d-flex gap-2 align-items-center" href="{% url 'english_page' i.id%}">
+          <svg class="bi" width="16" height="16"><use xlink:href="#files"></use></svg>
+          {{i.name}}
+        </a>
+      </li>
+      {% endfor %}
+      <li><hr class="dropdown-divider"></li>
+      <li>
+        <a class="dropdown-item d-flex gap-2 align-items-center" href="{% url 'english_page' 9 %}">
+          <svg class="bi" width="16" height="16"><use xlink:href="#files"></use></svg>
+          All Vocabs
+        </a>
+      </li>
+    </ul>
+  </div>
+  {% if perms.vocabs.add_category_languages%}
+  <div style="margin-top:20px">
+    <a href="{% url 'add_category_english' %}"><button type="button" class="btn btn-outline-secondary" style="font-family:Arial, Helvetica, sans-serif">افزودن کتگوری</button></a>
+  </div>
+  {% endif %}
+</center>
+{% endblock content%}

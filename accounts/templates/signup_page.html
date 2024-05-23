@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body style="background-image:url('https://www.hublot.com/sites/default/files/2023-06/background-white-grey-product-page_0.jpg');background-repeat:no-repeat;background-attachment: fixed;background-size: cover;">  
+  <center>
+    <div style="width: 200px;height:auto;background-color:#45474b;float:left;margin-left:200px;border-radius:10px">
+      <h1 style="font-family:Arial, Helvetica, sans-serif;color:#F4CE14;font-weight:bold;border-bottom:2px dashed #F4CE14">خطا</h1>
+        {% for i in sg.username.errors%}
+          <ul style="list-style-type: none;margin-right:25px">
+            <b><p style="font-family:Arial, Helvetica, sans-serif;" class="text-warning">:نام کاربری</p></b>
+            <b><li class="text-danger" dir="rtl">{{i}}</li></b>
+          </ul>
+        {% endfor %}
+        {% for i in sg.password.errors%}
+          <ul style="list-style-type: none;margin-right:25px">
+            <b><p style="font-family: Arial, Helvetica, sans-serif;" class="text-warning" >:رمزعبور</p></b>
+            <b><li class="text-danger" dir="rtl">{{i}}</li></b>
+          </ul>
+        {% endfor %}
+        {% for i in sg.confirmation.errors%}
+          <ul style="list-style-type: none;margin-right:25px">
+            <b><p style="font-family: Arial, Helvetica, sans-serif;" class="text-warning" >:تکرار رمز عبور</p></b>
+            <b><li class="text-danger" dir="rtl">{{i}}</li></b>
+          </ul>
+        {% endfor %}
+        {% for i in sg.firstname.errors%}
+          <ul style="list-style-type: none;margin-right:25px">
+            <b><p style="font-family: Arial, Helvetica, sans-serif;" class="text-warning" >:نام</p></b>
+            <b><li class="text-danger" dir="rtl">{{i}}</li></b>
+          </ul>
+        {% endfor %}
+        {% for i in sg.lastname.errors%}
+          <ul style="list-style-type: none;margin-right:25px">
+            <b><p style="font-family: Arial, Helvetica, sans-serif;" class="text-warning" >:نام خانوادگی</p></b>
+            <b><li class="text-danger" dir="rtl">{{i}}</li></b>
+          </ul>
+        {% endfor %}
+        {% for i in sg.email.errors%}
+          <ul style="list-style-type: none;margin-right:25px">
+            <b><p style="font-family: Arial, Helvetica, sans-serif;" class="text-warning" >:آدرس ایمیل</p></b>
+            <b><li class="text-danger" dir="rtl">{{i}}</li></b>
+          </ul>
+        {% endfor %}
+    </div>
+    <div style="background-color:#45474B;width:350px;height:800px;margin-top:65px;border-radius:20px">
+      
+        <form style="width:300px" method="POST" novalidate >
+          {% csrf_token%}
+            <div>
+                <h1 style="font-family:Arial, Helvetica, sans-serif;color:#F4CE14;font-weight:bold;border-bottom:2px dashed #F4CE14">ثبت نام</h1>
+            </div>
+            <div class="mb-3" style="padding-top:40px">
+              <label for="exampleInputEmail1" class="form-label" style="font-family: Arial, Helvetica, sans-serif;color:#F4CE14;font-weight:bold">نام کاربری</label>
+              {{sg.username}}
+            </div>
+            <div class="mb-3" style="margin-top:30px">
+              <label for="exampleInputPassword1" class="form-label" style="font-family: Arial, Helvetica, sans-serif;color:#F4CE14;font-weight:bold">رمز عبور</label>
+              {{sg.password}}
+            </div>
+            <div class="mb-3" style="margin-top:30px">
+                <label for="exampleInputPassword1" class="form-label" style="font-family: Arial, Helvetica, sans-serif;color:#F4CE14;font-weight:bold">تکرار رمزعبور</label>
+                {{sg.confirmation}}
+            </div>
+            <div class="mb-3" style="margin-top:30px">
+                <label for="exampleInputPassword1" class="form-label" style="font-family: Arial, Helvetica, sans-serif;color:#F4CE14;font-weight:bold">نام</label>
+                {{sg.firstname}}
+            </div>
+            <div class="mb-3" style="margin-top:30px">
+                <label for="exampleInputPassword1" class="form-label" style="font-family: Arial, Helvetica, sans-serif;color:#F4CE14;font-weight:bold">نام خانوادگی</label>
+                {{sg.lastname}}
+            </div>
+            <div class="mb-3" style="margin-top:30px">
+                <label for="exampleInputPassword1" class="form-label" style="font-family: Arial, Helvetica, sans-serif;color:#F4CE14;font-weight:bold">آدرس ایمیل</label>
+                {{sg.email}}
+            </div>
+            <button type="submit" class="btn btn-warning" style="margin-top: 50px;font-family: Arial, Helvetica, sans-serif;color:#45474B;font-weight:bold">ثبت نام</button>
+          </form>
+    </div>
+    </center>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>

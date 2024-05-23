@@ -1,0 +1,33 @@
+{% extends 'profile_base.html' %}
+{% block prof %}
+<div style="width:500px;background-color:white;margin-top:30px;display:inline-block;border-radius:20px">
+    <form method="post" style="width:300px">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Firstname</label>
+          {{fr.firstname}}
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Lastname</label>
+          {{fr.lastname}}
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Emailaddress</label>
+            {{fr.email}}
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">phonenumber</label>
+            {{fr.phonenumber}}
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">country</label>
+            {{fr.country}}
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">city</label>
+            {{fr.city}}
+          </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock prof %}

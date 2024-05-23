@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block title%}
+    add|Category
+{% endblock title%}
+{% block content%}
+<center>
+    <div>
+            {% block form%}
+            <form style="background-color: #fcd151; border-radius: 5px;width:500px;margin-top:150px;height:300px" method="post">
+              {% csrf_token %}
+            <h1 style="background-color:#45474b;color:aliceblue;font-size:25pt;height:60px;font-family:Arial, Helvetica, sans-serif;text-align:centers">افزودن کتگوری</h1>
+            <div class="mb-3" style="width:400px;margin-top:30px">
+                <label for="exampleInputEmail1" class="form-label">کتگوری</label>
+                {{ctfr.name}}
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top: 30px;">افزودن</button>
+            </form>
+            {%endblock form%}
+    </div>
+</center>
+{% endblock content%}
