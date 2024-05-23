@@ -6,13 +6,24 @@
 <center>
 <div style="width:1200px;margin-top:50px">
     {% for article in ar%}
-<div class="row featurette">
+    {% if article.published == "p" %}
+    
+    <div class="row featurette">
     <div class="col-md-7">
       <h1 class="featurette-heading fw-normal lh-1">{{article.title}}</h1>
       <p class="lead" dir="rtl" style="font-size:15pt;margin-top:50px">{{article.description|truncatewords:30}}</p>
       <div class="d-grid gap-2 col-6 mx-auto">
-        <a href="#"><button class="btn btn-primary" style="margin-top:150px">جزییات مقاله</button></a>
-        <button class="btn btn-primary" type="button">Button</button>
+        <a href="#"><button class="btn btn-secondary" style="margin-top:150px">جزییات مقاله</button></a>
+        <!-- <button class="btn btn-primary" type="button">Button</button> -->
+      </div>
+      <div>
+            {% for i in article.category.all%}
+                {% if i.published == True %}
+                <a style="margin-top:150px;float:right;margin-right:10px;text-decoration:none" dir="rtl" href="#">
+                    #{{i.name}}   
+                </a>
+                {% endif %}
+            {% endfor %}
       </div>
     </div>
     <div class="col-md-5">
@@ -21,6 +32,7 @@
   </div>
   <hr class="featurette-divider">
 </div>
+{% endif %}
 {% endfor %}
 </center>
 {% endblock content%}
