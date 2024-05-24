@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block content%}
+<center>
+    <div>
+        <form method="post" dir="rtl">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="exampleInputEmail1">ورود جمله</label>
+              {{fr.word}}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          {% if answer != 0 %}
+          <div style="border: 1px solid red;width:300px;margin-top:130px;border-radius:20px;background-color:#45474b;color:#ffc107">
+                <h1>تعداد کلمات==>{{answer}}</h1>
+          </div>
+          {% endif %}
+    </div>
+</center>
+{% endblock content%}
