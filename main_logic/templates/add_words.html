@@ -1,0 +1,21 @@
+{% extends 'litner_page.html'%}
+{% block content%}
+<center>
+<div style="background-color:rgba(0, 0, 0, 0.76);width:500px;height:300px;border-radius:20px">
+    <div style="padding-top:35px">
+        <form style="width:300px;color:white" method="POST">
+            {% csrf_token%}
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">کلمه</label>
+              {{fr.word}}
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">معنا</label>
+              {{fr.answer}}
+            </div>
+            <button type="submit" class="btn btn-light" style="margin-top:20px">افزودن</button>
+          </form>
+    </div>
+</div>
+</center>
+{% endblock content%}

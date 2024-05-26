@@ -28,5 +28,6 @@ urlpatterns = [
     path('profile/',include('Profile.urls')),
     path('articles/',include('articles.urls')),
     path('wordcount/',include('wordcount.urls')),
+    path('litner/',include('main_logic.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

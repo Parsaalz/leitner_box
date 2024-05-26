@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home','vocabs','accounts',
     'superuserpanel',"Profile",
-    'articles','wordcount'
+    'articles','wordcount','main_logic',
 ]
 
 MIDDLEWARE = [
