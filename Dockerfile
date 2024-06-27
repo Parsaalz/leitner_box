@@ -1,15 +1,6 @@
-FROM python:3.9-slim
-
-WORKDIR /app
-
-COPY requirements.txt /app/
-
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . /app/
-
-EXPOSE 8000
-
-ENV DJANGO_SETTINGS_MODULE=languageleitner.settings
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+FROM hub.hamdocker.ir/library/python:3.8
+WORKDIR /django_app/
+ADD ./requirements.txt ./
+RUN pip install -r ./requirements.txt
+ADD ./ ./
+ENTRYPOINT ["/bin/sh", "-c" , "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 django_app.wsgi"]
