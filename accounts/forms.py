@@ -21,7 +21,7 @@ class Login_Page_Form(forms.Form):
         return username_t
     
 class signup_page_Form(forms.Form):
-    username=forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"form-control"}),error_messages=erormessages1)
+    username=forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"form-control"}),error_messages=erormessages1,required=True)
     password=forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={"class":"form-control"}),error_messages=erormessages1)
     confirmation=forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={"class":"form-control"}),error_messages=erormessages1)
     firstname=forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"form-control"}),error_messages=erormessages1)
@@ -50,3 +50,19 @@ class signup_page_Form(forms.Form):
         if em:
             raise ValidationError('این ایمیل قبلا ثبت شده')
         return email_t
+
+class ForgetPasswordForm(forms.Form):
+    email=forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"form-control"}),required=True,error_messages={"required":"ایمیل باید وارد شود"})
+
+
+class ResetPasseord(forms.Form):
+    new_password=forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={"class":"form-control"}),required=True)
+    confirm_password=forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={"class":"form-control"}),required=True)
+
+    def clean_confirm_password(self):
+        password1=self.cleaned_data.get("new_password")
+        password2=self.cleaned_data.get('confirm_password')
+        if password1!=password2:
+            raise ValidationError("پسورد ها با هم همخوانی ندارند")
+        return password2
+            

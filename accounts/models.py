@@ -24,5 +24,6 @@ class Moreinformation(models.Model):
     country=models.CharField(max_length=100,blank=True,null=True)
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     city=models.CharField(max_length=100,blank=True,null=True)
+    changepass=models.BooleanField(default=False)
     
 

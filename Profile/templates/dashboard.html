@@ -18,5 +18,13 @@
                 <li></li> -->
             </ul>
         </div>
+        <div>
+            <form  enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                {{form.image_profile}}
+                {{form.errors}}
+                <button type="submit">submit</button>
+            </form>
+        </div>
     </div>
 {% endblock prof %}

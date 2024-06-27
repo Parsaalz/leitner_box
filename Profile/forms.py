@@ -7,3 +7,6 @@ class Change_Info(forms.Form):
     phonenumber=forms.CharField(max_length=12,widget=forms.TextInput(attrs={"class":"form-control"}))
     country=forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"form-control"}))
     city=forms.CharField(max_length=200,widget=forms.TextInput(attrs={"class":"form-control"}))
+
+class profile_image(forms.Form):
+    image_profile=forms.ImageField()
