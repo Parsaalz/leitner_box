@@ -1,14 +1,24 @@
-FROM python:3.9-slim
+# Use the official Python image from the Docker Hub with Python 3.10
+FROM python:3.10-slim
+
+# Set the working directory in the container
 WORKDIR /app
-RUN apt-get update -o Acquire::Retries=3 && \
-    apt-get install -y --no-install-recommends \
-    gcc \
-    libpq-dev \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+
+# Copy the requirements.txt file into the container at /app
 COPY requirements.txt /app/
-RUN pip install -v --no-cache-dir -r requirements.txt
+
+# Install any dependencies specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code into the container at /app
 COPY . /app/
+
+# Expose the port the app runs on
 EXPOSE 8000
-ENV DJANGO_SETTINGS_MODULE=myproject.settings
-CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+
+# Define environment variable
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Run the application
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
