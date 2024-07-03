@@ -1,4 +1,4 @@
-{% extends 'litner_page.html'%}
+{% extends 'litner_page2.html'%}
 {% block nav%}
 <nav style="height:180px">
     <a href="{% url 'home_page'%}"><button class="btn btn-outline-dark" style="margin-top:20px;margin-left:20px;float:left">برگشت به سایت</button></a>
@@ -9,20 +9,17 @@
 <div>
     <center>
         {% for i in words %}
-        <div style="width:350px;height:350px;background-color:rgba(0, 0, 0, 0.76);border-radius:20px">
-            <div style="padding-top:10px">
-                <h1 style="font-family: Arial, Helvetica, sans-serif;color:whitesmoke">مرورلغات</h1>
-            </div>
-            <div style="height:40px">
+        <div id="accesspanel" style="opacity:0.9;background: #111;border: 1px solid #191919;border-radius: .4em;bottom: 0;box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);height: 280px;left: 0;margin: auto;overflow: hidden;position: absolute;right: 0;top: 0;width: 300px;">
+            <div style="height:40px;">
                 <h2 style="color:black;margin-top:60px;background-color:rgba(240, 248, 255, 0.5);width:200px;height:50px;font-size:25pt;border-radius:10px">{{i.word}}</h2>
                 <!-- <a href="{% url 'litner_page'%}"><button class="btn btn-outline-light" style="margin-top:20px;margin-left:102px;float:left;width:150px">دیدن پاسخ</button></a> -->
                 <!-- <h5 style="color:black;margin-top:30px;background-color:rgba(240, 248, 255, 0.5);width:100px;height:30px;font-size:15pt;border-radius:10px"></h5> -->
 
             </div>
-            <div style="margin-top:80px;">
-                <a href="{% url 'wrong_ans' i.id%}"><button class="btn btn-danger" style="margin-top:20px;margin-left:45px;float:left;width:120px">غلط</button></a>
-                <a href="{% url 'correct_ans' i.id%}"><button class="btn btn-success" style="margin-top:20px;margin-left:20px;float:left;width:120px">درست</button></a>
-            </div>
+            <p class="p-container" style="text-align: center;margin-top:50px">
+                <a href="{% url 'wrong_ans' i.id%}"><button class="btn btn-danger" style="margin-top:20px;margin-left:20px;float:left;width:100px">غلط</button></a>
+                <a href="{% url 'correct_ans' i.id%}"><button class="btn btn-success" style="margin-top:20px;margin-left:20px;float:left;width:100px">درست</button></a>
+            </p>
         </div>
         {% endfor %}
     </center>

@@ -1,60 +1,39 @@
 {% extends "base.html" %}
 {% load static%}
 {% block title%}
-    Home
+    لایت باکس|خانه
 {% endblock title%}
 {% block content%}
-<div id="carouselExampleIndicators" class="carousel slide">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{% static 'img/pexels-pixabay-301920.jpg'%}" class="d-block w-100" alt="..." height="500px">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'img/pexels-pixabay-247819.jpg'%}" class="d-block w-100" alt="..." height="500px">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'img/image.gif'%}" class="d-block w-100" alt="..." height="500px">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  <!-- <div width="auto">
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3" style="height:500px">
-        <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="width:750px;border-radius:20px">
-          <div class="my-3 py-3">
-            <h2 class="display-5">زبان انگلیسی</h2>
-            <p class="lead">با ما شروه کن یاد بگیر  </p>
-          </div>
-          <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"><img src="{% static 'img/Modern Back To School(1).png'%}" class="d-block w-100" alt="..." style="height:277px;border-top-left-radius:20px;border-top-right-radius:20px"></div>
+<section id="hero" class="hero section">
+
+  <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+    {% for item in poster%}
+      <div class="carousel-item active" style="direction: rtl;">
+        <img src="{{item.image.url}}" alt="">
+        <div class="carousel-container">
+          <h2>{{item.title}}</h2>
+          <p style="text-align: center;font-family:Arial, Helvetica, sans-serif;font-size:15pt">{{item.short_description}}</p>
+          <a href="{% url item.url %}" class="btn-get-started">{{item.url_title}}</a>
         </div>
-        <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="width:750px;border-radius:20px">
-            <div class="my-3 py-3">
-              <h2 class="display-5">Another headline</h2>
-              <p class="lead">And an even wittier subheading.</p>
-            </div>
-            <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"><img src="{% static 'img/pexels-alexasfotos-7143078.jpg'%}" class="d-block w-100" alt="..." style="height:277px;border-top-left-radius:20px;border-top-right-radius:20px"></div>
-          </div>
-          <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="width:750px;border-radius:20px">
-            <div class="my-3 py-3">
-              <h2 class="display-5">Another headline</h2>
-              <p class="lead">And an even wittier subheading.</p>
-            </div>
-            <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"><img src="{% static 'img/pexels-alexasfotos-7143078.jpg'%}" class="d-block w-100" alt="..." style="height:277px;border-top-left-radius:20px;border-top-right-radius:20px"></div>
-          </div>
       </div>
-</div> -->
+    {% endfor %}
+    <div class="carousel-item active" style="direction: rtl;">
+      <img src="{% static 'assets/img/hero-carousel/hero-carousel-1.jpg' %}" alt="">
+      <div class="carousel-container">
+        <h2>به <span>لایت باکس </span>خوش آمدید </h2>
+        <p style="text-align: center;font-family:Arial, Helvetica, sans-serif;font-size:15pt">لایت باکس یک پلتفرم یادگیری زبان به سبک جدید می‌باشد این پلتفرم با بهره‌گیری از روش‌های نوین آموزشی و فناوری‌های پیشرفته، تجربه‌ای متفاوت و جذاب از یادگیری زبان‌های مختلف را برای کاربران خود فراهم می‌کند. در لایت باکس، تاکید بر یادگیری فعال و تعاملی است، به طوری که کاربران با استفاده از تمرین‌ها و فعالیت‌های گوناگون، مهارت‌های زبانی خود را به صورت کاربردی و موثر تقویت می‌کنند.</p>
+        <a href="{% url 'litner_page' %}" class="btn-get-started">ورود به اپلیکیشن</a>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+    </a>
+
+    <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+    </a>
+
+  </div>
 {% endblock content%}
 
 

@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def litner_page(request):
-    return render(request,'litner_page.html')
+    return render(request,'litner_page2.html')
 
 @login_required
 def litner_app(request):
@@ -31,12 +31,17 @@ def litner_app(request):
 def correct_ans(request,word_id):
     cr=HandleAnswer(request.user,word_id)
     cr.correctanswer()
-    return render(request,'correct_ans.html')
+    return redirect(f'{reverse("litner_app")}?page=1')
+
+
 @login_required
 def wrong_ans(request,word_id):
     cr=HandleAnswer(request.user,word_id)
     cr.WrongAnswer()
     return render(request,'correct_ans.html')
+
+
+
 @login_required
 def addwords(request):
     fr=AddWordLitnerForm()

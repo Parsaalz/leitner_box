@@ -17,7 +17,8 @@ def login_page(request):
             password_t=fr.cleaned_data.get("password")
             user_n=authenticate(request,username=username_t,password=password_t)
             if user_n is not None:
-                us_n=Moreinformation.objects.get(user=user_n)
+                us_n=Moreinformation.objects.filter(user=user_n).first()
+                print(us_n,1)
                 if us_n.changepass==True:
                     return redirect("reset_password",user_id=user_n.id)
                 login(request,user_n)
@@ -53,8 +54,9 @@ def signup_page(request):
             user.save()
             user=User.objects.get(username=username_t)
             image=Image_Users.objects.create(user=user,image='images/images.png')
+            user_more_info=Moreinformation.objects.create(user=user)
+            user_more_info.save()
             messages.success(request, 'با موفقیت ثبت نام کردید.')
-            time.sleep(3)
             return redirect("login_page")
     context={
         "sg":sg,
@@ -103,6 +105,13 @@ def reset_password(request,user_id):
             user_more=Moreinformation.objects.get(user=user_n)
             user_more.changepass=False
             user_more.save()
+            email_t=user_n.email
+            email = EmailMessage(
+                "بازیابی رمز عبور",
+                "رمز عبور شما تغییر یافت",
+                settings.EMAIL_HOST_USER,
+                [email_t],
+                ).send()
             return redirect('login_page')
     context={
         "form":form,
