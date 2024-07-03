@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'languageleitner.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": 'leitner_box',
+        "NAME": 'leitbox',
         "USER": 'postgres',
-        "PASSWORD": '13821124',
-        "HOST":'localhost',
+        "PASSWORD": '9k1AZXPRNFOHRrSQ3GfcH4PkJTdqN3pc',
+        "HOST":'leitbox.parsaalizadeh2022.svc:5432',
         "PORT": '5432',
     }
 }
