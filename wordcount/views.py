@@ -20,3 +20,5 @@ def countword(request):
         "fr":fr,"answer":answer+1,
     }
     return render(request,'countword.html',context)
+
+

@@ -23,6 +23,7 @@ def allusers(request):
     }
     return render(request,'allusers.html',context)
 
+
 def groups(request):
     add_grp=groups_Form()
     if request.method=="POST":

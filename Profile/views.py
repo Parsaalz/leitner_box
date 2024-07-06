@@ -22,6 +22,7 @@ def dashboard_page(request,user_id):
     return render(request,'dashboard.html',context)
 
 
+
 def changeinformation(request):
     user_n=User.objects.get(id=request.user.id)
     user_more=Moreinformation.objects.filter(user=request.user)

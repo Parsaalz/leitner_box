@@ -32,6 +32,7 @@ def login_page(request):
     return render(request,'login_page.html',context)
 
 
+
 def logout_page(request):
     logout(request)
     return redirect("home_page")

@@ -30,6 +30,8 @@ def add_category_english(request):
     }
     return render(request,'add_category_english.html',context)
 
+
+
 def english_page(request,category_id):
     if category_id==9:
         vc=english_vocabs.objects.all()
