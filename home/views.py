@@ -21,10 +21,21 @@ def get_emails(request):
         if flag == 0:
             cs=CustomerClub.objects.create(email=email)
             cs.save()
-    return redirect('home_page')
+            success="با موفقیت ثبت شد"
+            return success
+        else:
+            error="این ایمیل قبلا وارد شده است"
+            return error
 
 def header_page(request):
     return render(request,'header.html')
 
 def footer_page(request):
-    return render(request,'footer.html')
+    if request.method=="POST":
+        message=get_emails(request)
+        print(message)
+    message=''
+    context={
+        "message":message,
+    }
+    return render(request,'footer.html',context)

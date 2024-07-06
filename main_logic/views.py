@@ -6,12 +6,20 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.urls import reverse
 from .forms import AddWordLitnerForm
-from .models import LitnerApp
+from .models import LitnerApp,OrderDetail,Order,PremiumAccount
 from django.contrib.auth.decorators import login_required
 
 @login_required
 def litner_page(request):
-    return render(request,'litner_page2.html')
+    obj=MainLitnerApp(request.user,str(datetime.now().strftime("%Y-%m-%d")))
+    obs=obj.showwords()
+    flag=1
+    if len(obs) == 0:
+        flag=0
+    context={
+        "flag":flag,
+    }
+    return render(request,'home.html',context)
 
 @login_required
 def litner_app(request):
@@ -38,7 +46,7 @@ def correct_ans(request,word_id):
 def wrong_ans(request,word_id):
     cr=HandleAnswer(request.user,word_id)
     cr.WrongAnswer()
-    return render(request,'correct_ans.html')
+    return redirect(f'{reverse("litner_app")}?page=1')
 
 
 
@@ -57,3 +65,38 @@ def addwords(request):
         "fr":fr,
     }
     return render(request,'add_words.html',context)
+
+def account_management(request):
+    return render(request,'accountmanagement.html')
+
+def premium_accounts(request):
+    current_basket=Order.objects.filter(user=request.user,is_delete=False,is_paid=False)
+    if current_basket:
+        return redirect('basket')
+    if request.method=="POST":
+        current_basket,created=Order.objects.get_or_create(user=request.user,is_delete=False,is_paid=False)
+        items=current_basket.orderdetail_set.all()
+        if len(items) != 0:
+            return redirect('basket')
+        else:
+            id=request.POST.get('id')
+            premium_product=PremiumAccount.objects.filter(id=id).first()
+            print(premium_product)
+            new_order=OrderDetail.objects.create(premium=premium_product,order=current_basket)
+            new_order.save()
+            return redirect('basket')
+    return render(request,'premium.html')
+
+def basket(request):
+    current_basket=Order.objects.filter(user=request.user,is_delete=False,is_paid=False).prefetch_related('orderdetail_set').first()
+    context={
+        "current_basket":current_basket,
+    }
+    return render(request,'basket.html',context)
+
+
+def delete_basket(request,id):
+    current_basket=Order.objects.filter(user=request.user,is_delete=False,is_paid=False).first()
+    current_basket.is_delete=True
+    current_basket.save()
+    return redirect('litner_page')

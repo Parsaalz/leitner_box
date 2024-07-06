@@ -1,0 +1,26 @@
+{% extends 'mainpage.html' %}
+{% block content %}
+{% if flag == 0 %}
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+  <div class="py-5">
+    <h1 class="display-5 fw-bold text-white">مرور لغات امروز</h1>
+    <br><br>
+    <div class="col-lg-6 mx-auto">
+      <p class="fs-5 mb-4">کلمه ای برای امروز ندارید</p>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+  <div class="py-5">
+    <h1 class="display-5 fw-bold text-white">مرور لغات امروز</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="fs-5 mb-4">برای مرور لغات امروز بر روی کلید شروع کلیک کنید تا برای شما باز شود</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="{% url 'litner_app'%}?page=1"><button type="button" class="btn btn-outline-light">شروع</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock content%}

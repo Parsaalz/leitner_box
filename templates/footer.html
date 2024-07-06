@@ -6,10 +6,15 @@
           <div class="col-lg-6">
             <h4>به خبرنامه ما بپیوندید</h4>
             <p>با عضویت در خبرنامه ما از آخرین اخبار و خدمات ما مطلع شوید</p>
-            <form action="{% url 'get_emails'%}" method="post" >
-                {% csrf_token%}
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="دنبال کردن"></div>
+            <form method="post" >
+              {% csrf_token%}
+              <div>
+                <input type="text" class="form-control" name="email">
+                <br>
+                <button type="submit" class="btn btn-outline-light">عضویت</button>
+              </div>
             </form>
+            {{message}}
           </div>
         </div>
       </div>

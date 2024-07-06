@@ -1,27 +1,58 @@
-{% extends 'litner_page2.html'%}
-{% block nav%}
-<nav style="height:180px">
-    <a href="{% url 'home_page'%}"><button class="btn btn-outline-dark" style="margin-top:20px;margin-left:20px;float:left">برگشت به سایت</button></a>
-    <a href="{% url 'litner_page'%}"><button class="btn btn-outline-dark" style="margin-top:20px;margin-left:20px;float:left">برگشت به قبل</button></a>
-</nav>
-{% endblock nav%}
+{% extends 'mainpage.html'%}
 {% block content %}
-<div>
-    <center>
+    {% for i in words %}
+    <div class="bg-dark text-secondary px-4 py-5 text-center" style="margin-top:13%">
+        <div class="py-5">
+            <h1 class="display-5 fw-bold text-white">{{i.word}}</h1>
+            <br>
+        <div class="col-lg-6 mx-auto">
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="{% url 'correct_ans' i.id%}"><button type="button" class="btn btn-outline-success" style="width:80px">درست</button></a>
+                    <a href="{% url 'wrong_ans' i.id%}"><button type="button" class="btn btn-outline-danger" style="width:80px">غلط</button></a>
+                </div>
+                <br>
+                <div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="direction: ltr;">
+                        پاسخ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="direction: rtl;background-color:coral">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color: #212529;color:white">
+                <div class="modal-header" style="text-align:center">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"  style="direction: rtl;">معنای واژه</h1>
+                </div>
+                <div class="modal-body" style="margin-left:220px">
+                {{i.answer}}
+                <br><br><br><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="direction: rtl;">بستن</button>
+                </div>            
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- <center>
         {% for i in words %}
         <div id="accesspanel" style="opacity:0.9;background: #111;border: 1px solid #191919;border-radius: .4em;bottom: 0;box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);height: 280px;left: 0;margin: auto;overflow: hidden;position: absolute;right: 0;top: 0;width: 300px;">
             <div style="height:40px;">
-                <h2 style="color:black;margin-top:60px;background-color:rgba(240, 248, 255, 0.5);width:200px;height:50px;font-size:25pt;border-radius:10px">{{i.word}}</h2>
+                <h2 style="color:black;margin-top:60px;background-color:rgba(240, 248, 255, 0.5);width:200px;height:50px;font-size:25pt;border-radius:10px">{{i.word}}</h2> -->
                 <!-- <a href="{% url 'litner_page'%}"><button class="btn btn-outline-light" style="margin-top:20px;margin-left:102px;float:left;width:150px">دیدن پاسخ</button></a> -->
                 <!-- <h5 style="color:black;margin-top:30px;background-color:rgba(240, 248, 255, 0.5);width:100px;height:30px;font-size:15pt;border-radius:10px"></h5> -->
 
-            </div>
+            <!-- </div>
             <p class="p-container" style="text-align: center;margin-top:50px">
-                <a href="{% url 'wrong_ans' i.id%}"><button class="btn btn-danger" style="margin-top:20px;margin-left:20px;float:left;width:100px">غلط</button></a>
-                <a href="{% url 'correct_ans' i.id%}"><button class="btn btn-success" style="margin-top:20px;margin-left:20px;float:left;width:100px">درست</button></a>
+                <a href="{% url 'wrong_ans' i.id%}"><button type="button" class="btn btn-outline-danger" style="margin-top:20px;margin-left:60px;float:left;width:80px">غلط</button></a>
+                <a href="{% url 'correct_ans' i.id%}"><button type="button" class="btn btn-outline-success" style="margin-top:20px;margin-left:20px;float:left;width:80px">درست</button></a>
             </p>
         </div>
         {% endfor %}
     </center>
-</div>
+</div> -->
 {% endblock content %}

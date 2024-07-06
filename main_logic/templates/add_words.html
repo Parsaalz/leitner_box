@@ -1,7 +1,7 @@
-{% extends 'litner_page2.html'%}
+{% extends 'mainpage.html'%}
 {% block content%}
 <center>
-<div style="background-color:rgba(0, 0, 0, 0.76);width:500px;height:300px;border-radius:20px">
+<div style="background-color:rgba(0, 0, 0, 0.76);width:auto;height:auto;margin-top:13%">
     <div style="padding-top:35px">
         <form style="width:300px;color:white" method="POST">
             {% csrf_token%}
@@ -13,7 +13,7 @@
               <label for="exampleInputPassword1" class="form-label">معنا</label>
               {{fr.answer}}
             </div>
-            <button type="submit" class="btn btn-light" style="margin-top:20px">افزودن</button>
+            <button type="submit" class="btn btn-light" style="margin-bottom: 10px;">افزودن</button>
           </form>
     </div>
 </div>
