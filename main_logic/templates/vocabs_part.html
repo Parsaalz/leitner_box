@@ -1,0 +1,66 @@
+{% extends 'mainpage.html' %}
+{% block content %}
+<!-- <div class="row mb-2">
+    <div class="col-md-6" style="float:right">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static" style="background-color: #212529;">
+          <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-body-secondary">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue reading
+            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+          </a>
+        </div>
+    </div>
+    <div class="col-md-6" style="float:right">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
+          <h3 class="mb-0">Post title</h3>
+          <div class="mb-1 text-body-secondary">Nov 11</div>
+          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue reading
+            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<main class="container" style="text-align: center;">
+  <div class=" p-5 rounded mt-3" style="background-color: #212529;color:white">
+    <h1>افزودن واژه به صورت دستی</h1>
+    <br><br>
+    <a  href="{% url 'addwords' %}"><button type="button" class="btn btn-light">افزودن واژه</button></a>
+  </div>
+  <div class=" p-5 rounded mt-3" style="background-color: #212529;color:white">
+    <h1>انتخاب واژه از کتابخانه</h1>
+    <br><br>
+    <a  href="{% url 'bookstore' %}"><button type="button" class="btn btn-light">ورود به کتابخانه</button></a>
+  </div>
+</main>
+<!-- <div class="album py-5 " style="background-color: coral;">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-body-secondary">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div> -->
+{% endblock content %}  

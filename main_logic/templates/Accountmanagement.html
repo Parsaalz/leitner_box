@@ -1,44 +1,44 @@
 {% extends 'mainpage.html'%}
 {% load static %}
 {% block content%}
-<div class="modal modal-sheet position-static d-block  p-4 py-md-5" tabindex="-1" role="dialog" id="modalTour" style="background-color: coral;">
+<div class="modal modal-sheet position-static d-block  p-4 py-md-5" tabindex="-1" role="dialog" id="modalTour" style="background-color: FFFBDA;">
     <div class="modal-dialog" role="document">
-      <div class="modal-content rounded-4 shadow" >
+      <div class="modal-content rounded-4 shadow" style="background-color: #212529;">
         <div class="modal-body p-5" style="text-align: center;">
-          <h2 class="fw-bold mb-0">مدیریت حساب کاربری</h2>
+          <h2 class="fw-bold mb-0" style="color:white">مدیریت حساب کاربری</h2>
           <ul class="d-grid gap-4 my-5 list-unstyled small" style="float: right;">
-            <li class="d-flex gap-4">
+            <li class="d-flex gap-4"> 
               <div>
-                <h5 class="mb-0" ><a href="{% url 'premium_accounts' %}"><button type="button" class="btn btn-dark" style="width:130px">خرید اشتراک</button></a></h5>
+                <h5 class="mb-0" ><a href="{% url 'my_situation' %}"><button type="button" class="btn btn-light" style="width:130px">مشاهده وضعیت من</button></a></h5>
               </div>
             </li>
-            <li class="d-flex gap-4">
+            <!-- <li class="d-flex gap-4">
               <div>
                 <h5 class="mb-0"><a href="{% url 'basket' %}"><button type="button" class="btn btn-dark" style="width:130px">مشاهده سبد خرید</button></a></h5>
               </div>
-            </li>
-            <li class="d-flex gap-4">
+            </li> -->
+            <!-- <li class="d-flex gap-4">
               <div>
                 <h5 class="mb-0"><a href=""><button type="button" class="btn btn-dark" style="width:130px">مشخصات کاربری</button></a></h5>
               </div>
-            </li>
+            </li> -->
           </ul>
           <ul class="d-grid gap-4 my-5 list-unstyled small" style="float:right">
-            <li class="d-flex gap-4">
+            <!-- <li class="d-flex gap-4">
               <div>
                 <h5 class="mb-0"><a href="{% url 'premium_accounts' %}"><button type="button" class="btn btn-dark" style="width:130px">خرید اشتراک</button></a></h5>
               </div>
-            </li>
-            <li class="d-flex gap-4">
+            </li> -->
+            <!-- <li class="d-flex gap-4">
               <div>
                 <h5 class="mb-0"><a href="{% url 'basket' %}"><button type="button" class="btn btn-dark" style="width:130px">مشاهده سبد خرید</button></a></h5>
               </div>
-            </li>
-            <li class="d-flex gap-4">
+            </li> -->
+            <!-- <li class="d-flex gap-4">
               <div>
                 <h5 class="mb-0"><a href=""><button type="button" class="btn btn-dark" style="width:130px">مشخصات کاربری</button></a></h5>
               </div>
-            </li>
+            </li> -->
           </ul>
           <!-- <button type="button" class="btn btn-lg btn-primary mt-5 w-100" data-bs-dismiss="modal">Great, thanks!</button> -->
         </div>

@@ -8,6 +8,10 @@ from django.utils.crypto import get_random_string
 from django.core.mail import EmailMessage
 from django.conf import settings
 import time
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import AccountsSerializers
 def login_page(request):
     fr=Login_Page_Form()
     if request.method == "POST":
@@ -118,3 +122,9 @@ def reset_password(request,user_id):
         "form":form,
     }
     return render(request,'reset_pass.html',context)
+
+@api_view(['GET'])
+def accountsapi(request):
+    users=User.objects.all()
+    serializer=AccountsSerializers(users,many=True)
+    return Response(serializer.data,status=status.HTTP_200_OK)

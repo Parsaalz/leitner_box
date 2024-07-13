@@ -8,7 +8,11 @@ from django.urls import reverse
 from .forms import AddWordLitnerForm
 from .models import LitnerApp,OrderDetail,Order,PremiumAccount
 from django.contrib.auth.decorators import login_required
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import OrderSerializer
+from rest_framework import status
+from django.db.models import Q
 @login_required
 def litner_page(request):
     obj=MainLitnerApp(request.user,str(datetime.now().strftime("%Y-%m-%d")))
@@ -66,6 +70,14 @@ def addwords(request):
     }
     return render(request,'add_words.html',context)
 
+
+def vocabs(request):
+    return render(request,'vocabs_part.html')
+
+def bookstore(request):
+    return render(request,'bookstore.html')
+
+
 def account_management(request):
     return render(request,'accountmanagement.html')
 
@@ -100,3 +112,27 @@ def delete_basket(request,id):
     current_basket.is_delete=True
     current_basket.save()
     return redirect('litner_page')
+
+@api_view(['GET',"DELETE"])
+def transaction(request):
+    if request.method=="GET":
+        orders=Order.objects.all()
+        serializer=OrderSerializer(orders,many=True)
+        return Response(serializer.data,status=status.HTTP_200_OK)
+    else:
+        return Response({"result":"this is not good"},status=status.HTTP_400_BAD_REQUEST)
+    
+def my_situation(request):
+    zero=LitnerApp.objects.filter(Q(level=1) | Q(level=2) | Q(level=3) | Q(level=0))
+    one=LitnerApp.objects.filter(level=1)
+    two=LitnerApp.objects.filter(level=2)
+    three=LitnerApp.objects.filter(level=3)
+    four=LitnerApp.objects.filter(level=4)
+    context={
+        "zero":zero,
+        "one":one,
+        "two":two,
+        "three":three,
+        "four":four,
+    }
+    return render(request,'mysituation.html',context)

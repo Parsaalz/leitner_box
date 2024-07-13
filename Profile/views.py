@@ -60,4 +60,3 @@ def changeinformation(request):
         "fr":fr,
     }
     return render(request,'change_information.html',context)
-

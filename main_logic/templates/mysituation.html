@@ -1,0 +1,29 @@
+{% extends 'mainpage.html' %}
+{% block content %}
+<center>
+<div style="margin-top:10%;width:80%">
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+       کل واژگان
+      <span class="badge text-bg-secondary rounded-pill">{{zero.count}}</span>
+    </li>
+    <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+      واژگان در مرحله اول
+      <span class="badge text-bg-dark rounded-pill">{{one.count}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+       واژگان در مرحله دوم
+    <span class="badge text-bg-dark rounded-pill">{{two.count}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        واژگان در مرحله سوم
+     <span class="badge text-bg-dark rounded-pill">{{three.count}}</span>
+     </li> -->
+     <li class="list-group-item d-flex justify-content-between align-items-center">
+        واژگان به خاطر سپرده شده
+     <span class="badge text-bg-success rounded-pill">{{four.count}}</span>
+     </li>
+  </ul>
+</div>
+</center>
+{% endblock content %}
